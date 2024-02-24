@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROck paper Scissor</title>
+  <style>
+    .main {
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      margin-top: 49%;
+    }
+    html {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <input type="text" id="userMove" placeholder="Enter your move (Rock, Paper, or Scissors)">
+    <button class="button" 
+        onclick="
+          var compChoice = computerChoice();
+          playerMove(compChoice);">Click Me</button>
+  </div>
+  <script>
+    function computerChoice() {
+        const randdomValue = Math.random();
+        var computerChoice = '';
+
+        if (randdomValue >= 0 && randdomValue < 1/3) {
+            computerChoice = 'Rock';
+        } else if (randdomValue >= 1/3 && randdomValue < 2/3) {
+            computerChoice = 'Paper';
+        } else {
+            computerChoice = 'Scissors';
+        }
+        console.log(computerChoice);
+        return computerChoice;
+    }
+
+    function playerMove(computerChoice) {
+        var Move = document.getElementById("userMove").value.trim().toLowerCase();
+        if (Move == "rock") {
+            if (computerChoice == "Rock") {
+                alert("TIE");
+            } else if (computerChoice == "Paper") {
+                alert("YOU LOSE");
+            } else {
+                alert("YOU WIN");
+            }
+        } else if (Move == "paper") {
+            if (computerChoice == "Rock") {
+                alert("YOU WIN");
+            } else if (computerChoice == "Paper") {
+                alert("TIE");
+            } else {
+                alert("YOU LOSE");
+            }
+        } else if (Move == "scissors") {
+            if (computerChoice == "Rock") {
+                alert("YOU LOSE");
+            } else if (computerChoice == "Paper") {
+                alert("YOU WIN");
+            } else {
+                alert("TIE");
+            }
+        } else {
+            alert("Invalid input! Please enter Rock, Paper, or Scissors.");
+        }
+    }
+  </script>
+</body>
+</html>
